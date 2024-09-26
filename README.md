@@ -1,6 +1,6 @@
 # tfa-form
 
-# Monorepo for React Projects with Yarn Workspaces
+# Teach For All
 
 This monorepo contains multiple React applications and shared packages, managed with Yarn workspaces
 
