@@ -1,0 +1,10 @@
+.App {
+  display: flex;
+  justify-content: "center";
+  align-items: center;
+}
+
+.FormContainer {
+  width: 50%;
+  margin: 0 auto;
+}
