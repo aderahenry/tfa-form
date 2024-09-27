@@ -41,7 +41,7 @@ Ensure you have the following installed on your system:
 4. **Running the Web App**:
    Navigate to the `web` package and start the development server:
    ```bash
-   yarn workspace web dev/run
+   yarn workspace web start
    ```
 
 5. **Building the Web App**:
@@ -69,7 +69,7 @@ Ensure you have the following installed on your system:
 8. **Shared Code**:
    Shared logic (such as utilities or validation) is located in the `shared` package and can be imported into any workspace:
    ```js
-   import { Shared } from 'shared';
+   import TFAForm from '@tfa-form/shared';
    ```
 
 9. **Rebuilding Shared Package**:
