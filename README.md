@@ -75,7 +75,7 @@ Ensure you have the following installed on your system:
 9. **Rebuilding Shared Package**:
    If you make changes to the `shared` package, ensure you run the following command to build the shared package and apply the changes:
    ```bash
-   yarn workspace shared build
+   yarn workspace @tfa-form/shared build
    ```
 
 ## Useful Commands
