@@ -46,6 +46,7 @@ const Element: React.FC<Element> = ({
         onChangeText={onChangeText}
         keyboardType={keyboardType}
         multiline={type === "textarea"}
+        accessibilityLabel={`${label} input field`}
       />
     </View>
   );

@@ -20,7 +20,7 @@ const Element = ({ type, label, placeholder, value, onChangeText, }) => {
     }
     return (react_1.default.createElement(react_native_1.View, null,
         react_1.default.createElement(react_native_1.Text, { style: styles.label }, label),
-        react_1.default.createElement(react_native_1.TextInput, { style: styles.input, value: value, placeholder: placeholder, onChangeText: onChangeText, keyboardType: keyboardType, multiline: type === "textarea" })));
+        react_1.default.createElement(react_native_1.TextInput, { style: styles.input, value: value, placeholder: placeholder, onChangeText: onChangeText, keyboardType: keyboardType, multiline: type === "textarea", accessibilityLabel: `${label} input field` })));
 };
 const styles = react_native_1.StyleSheet.create({
     label: {
