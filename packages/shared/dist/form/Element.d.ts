@@ -1,14 +1,7 @@
-import React, { Dispatch, SetStateAction } from "react";
-import { FormFields } from "./useTFAForm";
-type ElementType = {
-    setFormFields: Dispatch<SetStateAction<FormFields>>;
-    id: string;
-    type: "text" | "email" | "tel" | "textarea";
-    label: string;
-    placeholder: string;
+import React from "react";
+export type ElementType = "text" | "email" | "tel" | "textarea";
+declare const _default: (props: {
+    type: ElementType;
     value: string;
-    onChangeText: (event: string) => void;
-    isValid?: boolean;
-};
-declare const Element: React.FC<ElementType>;
-export default Element;
+}) => React.JSX.Element;
+export default _default;

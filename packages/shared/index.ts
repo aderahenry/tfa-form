@@ -1,7 +1,3 @@
-export const add = (a: number, b: number) => {
-  return a + b;
-};
-
 export const validateNotEmptyAndAcceptable = (value: string) => value.trim().length > 2;
 export const validateEmail = (email: string) =>
   /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);

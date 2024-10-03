@@ -3,9 +3,9 @@ import { View, Text, ScrollView, StyleSheet } from "react-native";
 
 import FormDialog from "./FieldDialog";
 import SubmitAlert from "./Alert";
-import Buttons from "./Buttons";
 import useTFAForm from "./useTFAForm";
 import Element from "./Element";
+import { Button } from "./components";
 
 const TFAForm = () => {
   const {
@@ -21,6 +21,11 @@ const TFAForm = () => {
   } = useTFAForm();
   const [isDialogVisible, setIsDialogVisible] = useState<boolean>(false);
 
+  const onClearButtonPressHandler = () => {
+    onClearFormHandler()
+    setIsValidated(false)
+  }
+
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -31,18 +36,19 @@ const TFAForm = () => {
             <Element
               key={element.id}
               {...element}
-              onChangeText={(value) => onChangeTextHandler(value, element.id!)}
+              //@ts-ignore
+              onChangeText={(value: string) => onChangeTextHandler(value, element.id!)}
               setFormFields={setFormFields}
             />
           </View>
         ))}
-        <Buttons
-          formData={formData}
-          clearForm={onClearFormHandler}
-          setValidated={setIsValidated}
-          setIsDialogVisible={setIsDialogVisible}
-          onSubmitHandler={onSubmitHandler}
-        />
+        <Button type="addField" onPress={() => setIsDialogVisible(true)} />
+        <View style={styles.outerButtonContainer}>
+          <View style={styles.innerButtonContainer}>
+            <Button type="submit" onPress={onSubmitHandler} />
+            <Button type="clear" onPress={onClearButtonPressHandler} disabled={Object.keys(formData).length === 0} />
+          </View>
+        </View>
       </View>
       {/* {JSON.stringify(formData)} */}
       <FormDialog
@@ -58,13 +64,25 @@ const TFAForm = () => {
 const styles = StyleSheet.create({
   container: {
     width: "90%",
-    alignSelf: "center", // Ensure the buttons span the width of the container
+    alignSelf: "center",
   },
   formTitle: {
     fontSize: 24,
     fontWeight: "bold",
     marginBottom: 20,
     alignSelf: "center"
+  },
+  outerButtonContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 0,
+  },
+  innerButtonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+    marginTop: 10,
   },
 });
 

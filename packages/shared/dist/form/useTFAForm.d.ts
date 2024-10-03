@@ -5,7 +5,6 @@ export type FormField = TextInputProps & {
     label: string;
     placeholder: string;
     value: string;
-    isValid: boolean;
 };
 export type FormFields = {
     name: FormField;
@@ -20,7 +19,6 @@ declare const useTFAForm: () => {
         label: string;
         placeholder: string;
         value: string;
-        isValid: boolean;
     } & {
         id: string;
     })[];

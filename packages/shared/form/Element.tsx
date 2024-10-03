@@ -1,27 +1,27 @@
 import React, { Dispatch, SetStateAction } from "react";
 import { View, TextInput, Text, StyleSheet, KeyboardType } from "react-native";
 
+import withValidation from "./hoc/withValidation";
 import { FormFields } from "./useTFAForm";
 
-type ElementType = {
+export type ElementType = "text" | "email" | "tel" | "textarea";
+
+type Element = {
   setFormFields: Dispatch<SetStateAction<FormFields>>;
   id: string;
-  type: "text" | "email" | "tel" | "textarea";
+  type: ElementType;
   label: string;
   placeholder: string;
   value: string;
   onChangeText: (event: string) => void;
-  isValid?: boolean;
 };
 
-const Element: React.FC<ElementType> = ({
-  id,
+const Element: React.FC<Element> = ({
   type,
   label,
   placeholder,
   value,
   onChangeText,
-  isValid,
 }) => {
   let keyboardType: KeyboardType = "default"
 
@@ -40,19 +40,13 @@ const Element: React.FC<ElementType> = ({
     <View>
       <Text style={styles.label}>{label}</Text>
       <TextInput
-        style={[
-          styles.input,
-          !isValid ? styles.invalidInput : styles.validInput,
-        ]}
+        style={styles.input}
         value={value}
         placeholder={placeholder}
         onChangeText={onChangeText}
         keyboardType={keyboardType}
         multiline={type === "textarea"}
       />
-      {!isValid && (
-        <Text style={styles.errorText}>{`Invalid ${id}`}</Text>
-      )}
     </View>
   );
 };
@@ -68,17 +62,6 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 5,
   },
-  invalidInput: {
-    borderColor: "#f00",
-  },
-  validInput: {
-    borderColor: "#ccc",
-  },
-  errorText: {
-    color: "#f00",
-    fontSize: 12,
-    marginTop: 5,
-  },
 });
 
-export default Element;
+export default withValidation(Element);
