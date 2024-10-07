@@ -1,14 +1,11 @@
-import React, { Dispatch, SetStateAction } from "react";
-import { View, TextInput, Text, StyleSheet, KeyboardType } from "react-native";
+import React from "react";
+import { TextInput, Text, StyleSheet, KeyboardType } from "react-native";
 
 import withValidation from "./hoc/withValidation";
-import { FormFields } from "./useTFAForm";
 
 export type ElementType = "text" | "email" | "tel" | "textarea";
 
-type Element = {
-  setFormFields: Dispatch<SetStateAction<FormFields>>;
-  id: string;
+export type Element = {
   type: ElementType;
   label: string;
   placeholder: string;
@@ -37,7 +34,7 @@ const Element: React.FC<Element> = ({
   }
 
   return (
-    <View>
+    <>
       <Text style={styles.label}>{label}</Text>
       <TextInput
         style={styles.input}
@@ -48,7 +45,7 @@ const Element: React.FC<Element> = ({
         multiline={type === "textarea"}
         accessibilityLabel={`${label} input field`}
       />
-    </View>
+    </>
   );
 };
 

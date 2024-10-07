@@ -24,8 +24,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
-const react_native_1 = require("react-native");
 const __1 = require("../..");
+const components_1 = require("../components");
 const withValidation = (WrappedComponent) => {
     return (props) => {
         const [error, setError] = (0, react_1.useState)("");
@@ -46,16 +46,7 @@ const withValidation = (WrappedComponent) => {
         }, [value, type]);
         return (react_1.default.createElement(react_1.default.Fragment, null,
             react_1.default.createElement(WrappedComponent, Object.assign({}, props)),
-            error && react_1.default.createElement(react_native_1.Text, { style: styles.errorText }, error)));
+            react_1.default.createElement(components_1.Error, { error: error })));
     };
 };
-const styles = react_native_1.StyleSheet.create({
-    errorText: {
-        color: "#f00",
-        marginTop: 5,
-    },
-    invalidInput: {
-        borderColor: "#f00",
-    },
-});
 exports.default = withValidation;

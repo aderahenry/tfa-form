@@ -11,11 +11,11 @@ import {
 type FormDialogProps = {
   visible: boolean;
   onClose: () => void;
-  onSubmit: (type: string, label: string) => void;
+  onSubmit: (type: "text" | "textarea", label: string) => void;
 };
 
-const FormDialog = ({ visible, onClose, onSubmit }: FormDialogProps) => {
-  const [fieldType, setFieldType] = useState<"input" | "textarea" | null>(null);
+const FieldDialog = ({ visible, onClose, onSubmit }: FormDialogProps) => {
+  const [fieldType, setFieldType] = useState<"text" | "textarea" | null>(null);
   const [fieldLabel, setFieldLabel] = useState<string>("");
 
   const handleFormSubmit = () => {
@@ -33,13 +33,12 @@ const FormDialog = ({ visible, onClose, onSubmit }: FormDialogProps) => {
         <View style={styles.dialogContainer}>
           <Text style={styles.dialogTitle}>Select Field Type</Text>
 
-          {/* Custom Radio Buttons */}
           <TouchableOpacity
             style={styles.radioButton}
-            onPress={() => setFieldType("input")}
+            onPress={() => setFieldType("text")}
           >
             <View style={styles.radioCircle}>
-              {fieldType === "input" && <View style={styles.selectedCircle} />}
+              {fieldType === "text" && <View style={styles.selectedCircle} />}
             </View>
             <Text style={styles.radioLabel}>Short Text</Text>
           </TouchableOpacity>
@@ -147,4 +146,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default FormDialog;
+export default FieldDialog;

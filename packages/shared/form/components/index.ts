@@ -1,3 +1,4 @@
 import Button from "./Button";
+import Error from "./Error";
 
-export { Button }
+export { Button, Error }

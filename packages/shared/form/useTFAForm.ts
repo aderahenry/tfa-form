@@ -53,8 +53,7 @@ const useTFAForm = () => {
       const fieldKey = key as keyof FormFields;
   
       elements.push({
-        //@ts-ignore
-        id: fieldKey,
+        id: fieldKey as string,
         type,
         placeholder,
         value,
@@ -113,7 +112,6 @@ const useTFAForm = () => {
         label,
         placeholder: type === "textarea" ? `Type your ${label}...` : label,
         value: "",
-        isValid: true,
       },
     };
     setFormFields(updatedFields);

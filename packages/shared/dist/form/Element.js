@@ -18,7 +18,7 @@ const Element = ({ type, label, placeholder, value, onChangeText, }) => {
         default:
             keyboardType = 'default';
     }
-    return (react_1.default.createElement(react_native_1.View, null,
+    return (react_1.default.createElement(react_1.default.Fragment, null,
         react_1.default.createElement(react_native_1.Text, { style: styles.label }, label),
         react_1.default.createElement(react_native_1.TextInput, { style: styles.input, value: value, placeholder: placeholder, onChangeText: onChangeText, keyboardType: keyboardType, multiline: type === "textarea", accessibilityLabel: `${label} input field` })));
 };

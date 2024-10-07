@@ -1,7 +1,11 @@
 import React from "react";
 export type ElementType = "text" | "email" | "tel" | "textarea";
-declare const _default: (props: {
+export type Element = {
     type: ElementType;
+    label: string;
+    placeholder: string;
     value: string;
-}) => React.JSX.Element;
+    onChangeText: (event: string) => void;
+};
+declare const _default: (props: Element) => React.JSX.Element;
 export default _default;

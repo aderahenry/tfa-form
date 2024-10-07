@@ -25,7 +25,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
 const react_native_1 = require("react-native");
-const FormDialog = ({ visible, onClose, onSubmit }) => {
+const FieldDialog = ({ visible, onClose, onSubmit }) => {
     const [fieldType, setFieldType] = (0, react_1.useState)(null);
     const [fieldLabel, setFieldLabel] = (0, react_1.useState)("");
     const handleFormSubmit = () => {
@@ -40,8 +40,8 @@ const FormDialog = ({ visible, onClose, onSubmit }) => {
         react_1.default.createElement(react_native_1.View, { style: styles.modalOverlay },
             react_1.default.createElement(react_native_1.View, { style: styles.dialogContainer },
                 react_1.default.createElement(react_native_1.Text, { style: styles.dialogTitle }, "Select Field Type"),
-                react_1.default.createElement(react_native_1.TouchableOpacity, { style: styles.radioButton, onPress: () => setFieldType("input") },
-                    react_1.default.createElement(react_native_1.View, { style: styles.radioCircle }, fieldType === "input" && react_1.default.createElement(react_native_1.View, { style: styles.selectedCircle })),
+                react_1.default.createElement(react_native_1.TouchableOpacity, { style: styles.radioButton, onPress: () => setFieldType("text") },
+                    react_1.default.createElement(react_native_1.View, { style: styles.radioCircle }, fieldType === "text" && react_1.default.createElement(react_native_1.View, { style: styles.selectedCircle })),
                     react_1.default.createElement(react_native_1.Text, { style: styles.radioLabel }, "Short Text")),
                 react_1.default.createElement(react_native_1.TouchableOpacity, { style: styles.radioButton, onPress: () => setFieldType("textarea") },
                     react_1.default.createElement(react_native_1.View, { style: styles.radioCircle }, fieldType === "textarea" && react_1.default.createElement(react_native_1.View, { style: styles.selectedCircle })),
@@ -119,4 +119,4 @@ const styles = react_native_1.StyleSheet.create({
         color: "#fff",
     },
 });
-exports.default = FormDialog;
+exports.default = FieldDialog;

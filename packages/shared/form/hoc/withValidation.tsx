@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Text, StyleSheet } from "react-native";
-import { ElementType } from "../Element";
-import { validateEmail, validatePhone } from "../..";
 
-const withValidation = (WrappedComponent: React.ComponentType<any>) => {
-  return (props: { type: ElementType; value: string }) => {
+import { Element } from "../Element";
+import { validateEmail, validatePhone } from "../..";
+import { Error } from "../components";
+
+const withValidation = (WrappedComponent: React.FunctionComponent<any>) => {
+  return (props: Element) => {
     const [error, setError] = useState("");
     const { type, value } = props;
 
@@ -23,20 +24,10 @@ const withValidation = (WrappedComponent: React.ComponentType<any>) => {
     return (
       <>
         <WrappedComponent {...props} />
-        {error && <Text style={styles.errorText}>{error}</Text>}
+        <Error error={error} />
       </>
     );
   };
 };
-
-const styles = StyleSheet.create({
-  errorText: {
-    color: "#f00",
-    marginTop: 5,
-  },
-  invalidInput: {
-    borderColor: "#f00",
-  },
-});
 
 export default withValidation;
